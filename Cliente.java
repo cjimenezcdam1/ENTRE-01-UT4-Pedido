@@ -52,8 +52,16 @@ public class Cliente
      * representación textual del cliente
      */
     public String toString() {
-         
-          
+          String lineaFormateada = String.format("%10s","NOMBRE: ");
+          lineaFormateada += String.format("%-10s",nombre);
+          lineaFormateada += String.format("\n%10s","DIRECCIÓN: ");
+          lineaFormateada += String.format("%-10s",direccion);
+          //Hay que poner a ciudad en 11 para que se quede centrado. Sino no se queda.
+          lineaFormateada += String.format("\n%11s","CIUDAD: ");
+          lineaFormateada += String.format("%-10s",ciudad);
+          lineaFormateada += String.format("\n%10s","PROVINCIA: ");
+          lineaFormateada += String.format("%-10s",provincia);
+          return lineaFormateada;
     }
     
     /**
