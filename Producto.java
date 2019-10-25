@@ -32,8 +32,9 @@ public class Producto
     /**
      * obtiene un nuevo producto copia idéntica del actual
      */
-    public         obtenerCopia() {
-         
+    public Producto obtenerCopia() {
+        Producto productoCopia = new Producto(this.getNombre(), this.getPrecio());
+        return productoCopia;
     }
 
     /**
@@ -41,7 +42,9 @@ public class Producto
      * (ver enunciado)
      */
     public String toString() {
-        
+        String lineaFormateada = String.format("%30s", nombre + " |");
+        lineaFormateada += String.format("%8.2f", precio);
+        lineaFormateada += String.format("€ unidad");
+        return lineaFormateada;
     }
-
 }
