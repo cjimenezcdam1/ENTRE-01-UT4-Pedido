@@ -26,14 +26,14 @@ public class Pedido
     /**
      * accesor para la fecha del pedido
      */
-    public Fecha getFecha() {
+    public String getFecha() {
          return fecha.toString();
     }
 
     /**
      * accesor para el cliente
      */
-    public Cliente getCliente() {
+    public String getCliente() {
          return cliente.toString();
     }
     
@@ -41,22 +41,24 @@ public class Pedido
     /**
      * calcular y devolver el importe total del pedido sin Iva
      */
-    public   getImporteAntesIva() {
-         return 
+    public double getImporteAntesIva() {
+        double precioP1 = (linea1.getProducto().getPrecio()) * linea1.getCantidad();
+        double precioP2 = (linea2.getProducto().getPrecio()) * linea2.getCantidad();
+        return precioP1 + precioP2;
     }
 
     /**
      * calcular y devolver el iva a aplicar
      */
-    public   getIva() {
-         return
+    public double getIva() {
+         return this.getImporteAntesIva() * IVA;
     }
 
     /**
      * calcular y devolver el importe total del pedido con Iva
      */
-    public   getImporteTotal() {
-         
+    public double getImporteTotal() {
+         return this.getIva() + this.getImporteAntesIva();
     }
 
     /**
@@ -64,7 +66,7 @@ public class Pedido
      * (ver enunciado)
      */
     public String toString() {
-        
+        return "Hola";
     }
     
     
@@ -73,14 +75,14 @@ public class Pedido
      * como parámetro
      */
     public boolean masAntiguoQue(Pedido otro) {
-         
+         return true;
     }
     
      /**
      * devuelve una referencia al pedido actual
      */
-    public    getPedidoActual() {
-        
+    public Pedido getPedidoActual() {
+        return this;
     }
 
 }
