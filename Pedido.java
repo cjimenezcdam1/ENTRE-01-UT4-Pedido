@@ -26,15 +26,15 @@ public class Pedido
     /**
      * accesor para la fecha del pedido
      */
-    public String getFecha() {
-         return fecha.toString();
+    public Fecha getFecha() {
+         return fecha;
     }
 
     /**
      * accesor para el cliente
      */
-    public String getCliente() {
-         return cliente.toString();
+    public Cliente getCliente() {
+         return cliente;
     }
     
     
@@ -51,14 +51,14 @@ public class Pedido
      * calcular y devolver el iva a aplicar
      */
     public double getIva() {
-         return this.getImporteAntesIva() * IVA;
+         return getImporteAntesIva() * IVA;
     }
 
     /**
      * calcular y devolver el importe total del pedido con Iva
      */
     public double getImporteTotal() {
-         return this.getIva() + this.getImporteAntesIva();
+         return getIva() + getImporteAntesIva();
     }
 
     /**
@@ -66,7 +66,28 @@ public class Pedido
      * (ver enunciado)
      */
     public String toString() {
-        return "Hola";
+        String lineaFormateada = String.format("FECHA PEDIDO: " + fecha.toString());
+        lineaFormateada += String.format("\nDATOS DEL CLIENTE"
+                                            + "\n" + cliente.toString()
+                                            + "\n"
+                                            + "\n**** Artículos en el pedido ***"
+                                            + "\n"
+                                            + "\n" + linea1.toString()
+                                            + "\n" + linea2.toString()
+                                            + "\n"
+                                            + "\n**** A pagar ***"
+                                            + "\n"
+                                            + "\n");
+        lineaFormateada += String.format("%20s", "IMPORTE SIN IVA:");
+        lineaFormateada += String.format("%8.2f", getImporteAntesIva());
+        lineaFormateada += String.format("€\n");
+        lineaFormateada += String.format("%20s", "IVA:");
+        lineaFormateada += String.format("%8.2f", getIva());
+        lineaFormateada += String.format("€\n");
+        lineaFormateada += String.format("%20s", "IMPORTE TOTAL:");
+        lineaFormateada += String.format("%8.2f", getImporteTotal());
+        lineaFormateada += String.format("€");
+        return lineaFormateada;
     }
     
     
@@ -75,7 +96,7 @@ public class Pedido
      * como parámetro
      */
     public boolean masAntiguoQue(Pedido otro) {
-         return true;
+         return fecha.antesQue(otro.getFecha());
     }
     
      /**
@@ -84,5 +105,4 @@ public class Pedido
     public Pedido getPedidoActual() {
         return this;
     }
-
 }

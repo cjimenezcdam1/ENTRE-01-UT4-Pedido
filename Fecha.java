@@ -41,7 +41,6 @@ public class Fecha
     public boolean antesQue(Fecha fecha) {
         return this.date.isBefore(LocalDate.of(fecha.getYear(),
                         fecha.getMes(), fecha.getDia()));
-
     }
 
     /**

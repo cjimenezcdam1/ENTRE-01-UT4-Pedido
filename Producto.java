@@ -33,7 +33,7 @@ public class Producto
      * obtiene un nuevo producto copia idéntica del actual
      */
     public Producto obtenerCopia() {
-        Producto productoCopia = new Producto(this.getNombre(), this.getPrecio());
+        Producto productoCopia = new Producto(getNombre(), getPrecio());
         return productoCopia;
     }
 
